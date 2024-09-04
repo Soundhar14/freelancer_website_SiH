@@ -1,27 +1,20 @@
-const mysql = require('mysql2/promise');
-const dotenv = require('dotenv');
+const express = require(`express`);
+const cors = require(`cors`);
+const dotenv = require(`dotenv`);
+//
+//routes
+const signin_route = require('./general/signin');
 dotenv.config();
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
+//middle ware
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-async function testConnection() {
-  let connection;
-  try {
-    connection = await pool.getConnection();
-    console.log('Database connected successfully!');
-  } catch (error) {
-    console.error('Database connection failed:', error.message);
-  } finally {
-    if (connection) connection.release();
-  }
-}
 
-testConnection();
+app.use('/signin',signin_route);
+
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`Server is running on the port ${PORT}`)
+} )

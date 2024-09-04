@@ -11,14 +11,18 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME
 });
 
+
+
 // Test the connection
 connection.connect((err) => {
   if (err) {
     console.error('Error connecting to the database:', err.stack);
     return;
   }
-  console.log('Connected to the database as id', connection.threadId);
+  console.log(`Connected to the database on port ${process.env.DB_PORT}`);
 });
 
 // Close the connection
 connection.end();
+
+module.exports = connection;
