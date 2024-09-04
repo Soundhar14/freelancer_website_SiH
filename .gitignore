@@ -1,0 +1,46 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Debug and runtime files
+pids/
+*.pid
+*.pid.lock
+
+# Coverage directory for testing
+coverage/
+
+# Binaries and compiled files
+*.out
+*.exe
+*.dll
+*.so
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+.cache/
+
+# Build directories
+dist/
+build/
+
+# Dependency directories
+jspm_packages/
